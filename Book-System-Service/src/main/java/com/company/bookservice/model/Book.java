@@ -4,15 +4,15 @@ import java.util.Objects;
 
 public class Book {
 
-    private Integer bookId;
+    private int bookId;
     private String title;
     private String author;
 
-    public Integer getBookId() {
+    public int getBookId() {
         return bookId;
     }
 
-    public void setBookId(Integer bookId) {
+    public void setBookId(int bookId) {
         this.bookId = bookId;
     }
 
@@ -37,7 +37,7 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(bookId, book.bookId) &&
+        return bookId == book.bookId &&
                 title.equals(book.title) &&
                 author.equals(book.author);
     }

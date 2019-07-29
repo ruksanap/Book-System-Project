@@ -33,7 +33,7 @@ public class NoteServiceController {
 
     @GetMapping("/book/{bookId}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Note> getNoteByBook(@PathVariable("bookId") Integer bookId) {
+    public List<Note> getNoteByBook(@PathVariable("bookId") int bookId) {
         List<Note> noteList = noteDao.getNotesByBook(bookId);
         if (noteList != null && noteList.size() == 0)
             throw new IllegalArgumentException("Note is not available for " + bookId);
@@ -49,6 +49,7 @@ public class NoteServiceController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteNote(@PathVariable("id") int noteId) {
+
         noteDao.deleteNote(noteId);
     }
 

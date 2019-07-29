@@ -4,15 +4,15 @@ import java.util.Objects;
 
 public class Note {
 
-    private Integer noteId;
+    private int noteId;
     private Integer bookId;
     private String note;
 
-    public Integer getNoteId() {
+    public int getNoteId() {
         return noteId;
     }
 
-    public void setNoteId(Integer noteId) {
+    public void setNoteId(int noteId) {
         this.noteId = noteId;
     }
 
@@ -37,7 +37,7 @@ public class Note {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Note note1 = (Note) o;
-        return Objects.equals(noteId, note1.noteId) &&
+        return noteId == note1.noteId &&
                 bookId.equals(note1.bookId) &&
                 note.equals(note1.note);
     }
