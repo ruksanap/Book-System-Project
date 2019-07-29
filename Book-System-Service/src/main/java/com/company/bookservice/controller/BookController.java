@@ -70,8 +70,13 @@ public class BookController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public BookViewModel updateBook(@RequestBody BookViewModel bookViewModel) {
-
+    public BookViewModel updateBook(@PathVariable ("id") Integer id, @RequestBody BookViewModel bookViewModel) {
+        if (bookViewModel.getBookId() == 00) {
+            bookViewModel.setBookId(id);
+        }
+        if (id != bookViewModel.getBookId()) {
+            throw new IllegalArgumentException("Book ID on path must match ID of Book.");
+        }
         return service.updateBook(bookViewModel);
     }
 //    Update Book
