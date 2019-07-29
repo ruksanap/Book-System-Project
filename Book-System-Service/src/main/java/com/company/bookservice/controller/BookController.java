@@ -18,8 +18,10 @@ import java.util.List;
 @RefreshScope
 public class BookController {
 
+
     @Autowired
     BookService service;
+
 
 
     @PostMapping
@@ -39,7 +41,8 @@ public class BookController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private BookViewModel findBookById(@PathVariable("id") Integer id) {
+    private BookViewModel findBookById(@PathVariable("id") int id) {
+        System.out.println("id="+id);
         BookViewModel bookViewModel = service.findBookById(id);
         if (bookViewModel == null) {
             throw new IllegalArgumentException("Book cannot be retrieved by ID provided: " + id);
@@ -57,6 +60,7 @@ public class BookController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<BookViewModel> findAllBooks() {
+        System.out.println(service);
         return service.findAllBooks();
     }
 //    Get All Books
@@ -70,7 +74,7 @@ public class BookController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public BookViewModel updateBook(@RequestBody BookViewModel bookViewModel) {
+    public BookViewModel updateBook(@PathVariable int id, @RequestBody BookViewModel bookViewModel) {
 
         return service.updateBook(bookViewModel);
     }
@@ -85,6 +89,7 @@ public class BookController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBook(@PathVariable ("id") int id) {
+
         service.deleteBook(id);
     }
 //    Delete Book
