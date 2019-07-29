@@ -16,18 +16,20 @@ import java.util.List;
 @Component
 public class BookService {
 
+    @Autowired
     private BookDao bookDao;
 
-    @Autowired
-    private final NoteServiceClient noteServiceClient;
+    //@Autowired
+    private final NoteServiceClient noteServiceClient  = null;
 
+    public BookService() {
 
-
+    }
     @Autowired
     public BookService(BookDao newBookDao, NoteServiceClient noteServiceClient){
 
         this.bookDao = newBookDao;
-        this.noteServiceClient = noteServiceClient;
+        //this.noteServiceClient = noteServiceClient;
     }
 
 
@@ -43,7 +45,7 @@ public class BookService {
 
     }
 
-    public BookViewModel findBookById(Integer id){
+    public BookViewModel findBookById(int id){
 
         Book book = new Book();
         book = bookDao.getBook(id);
@@ -85,7 +87,7 @@ public class BookService {
     @Transactional
     public void deleteBook(int id){
 
-        noteServiceClient.deleteNotesByBook(id);
+        //noteServiceClient.deleteNotesByBook(id);
 
         bookDao.deleteBook(id);
 
@@ -98,9 +100,9 @@ public class BookService {
         bvm.setTitle(book.getTitle());
         bvm.setAuthor(book.getAuthor());
 
-        List<Note> noteList = noteServiceClient.getNotesByBook(book.getBookId());
+        //List<Note> noteList = noteServiceClient.getNotesByBook(book.getBookId());
 
-        bvm.setNote(noteList);
+        //bvm.setNote(noteList);
 
         return bvm;
 
