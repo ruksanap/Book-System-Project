@@ -17,7 +17,7 @@ public class NoteDaoJdbcTemplateImpl implements NoteDao{
     private JdbcTemplate jdbcTemplate;
 
     private static final String INSERT_NOTE_SQL =
-                                "insert into note (note_id, book_id, note) values (?, ?, ?)";
+                                "insert into note (book_id, note) values (?, ?)";
 
     private static final String SELECT_NOTE_SQL =
             "select * from note where note_id = ?";
@@ -26,7 +26,7 @@ public class NoteDaoJdbcTemplateImpl implements NoteDao{
             "select * from note";
 
     private static final String DELETE_NOTE_SQL =
-            "delete from vin where note_id = ?";
+            "delete from note where note_id = ?";
 
     private static final String UPDATE_NOTE_SQL =
             "update note set book_id = ?, note = ? where note_id = ?";
