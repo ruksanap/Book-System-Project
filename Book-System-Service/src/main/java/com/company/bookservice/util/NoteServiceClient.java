@@ -13,10 +13,10 @@ import java.util.List;
 public interface NoteServiceClient {
 
     @RequestMapping(value = "/notes/book/{bookId}", method = RequestMethod.GET)
-    public List<Note> getNotesByBook(@PathVariable Integer bookId);
+    public List<Note> getNoteByBook(@PathVariable("bookId") int bookId);
 
-    @RequestMapping(value = "/notes/book/{bookId}", method = RequestMethod.DELETE)
-    public void deleteNotesByBook(@PathVariable Integer bookId);
+    @RequestMapping(value = "/notes/{id}", method = RequestMethod.DELETE)
+    public void deleteNote(@PathVariable("id") int noteId);
 
 
 

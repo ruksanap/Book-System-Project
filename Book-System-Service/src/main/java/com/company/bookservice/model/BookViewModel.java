@@ -5,16 +5,16 @@ import java.util.Objects;
 
 public class BookViewModel {
 
-    private Integer bookId;
+    private int bookId;
     private String title;
     private String author;
     private List<Note> note;
 
-    public void setBookId(Integer bookId){
+    public void setBookId(int bookId){
         this.bookId = bookId;
     }
 
-    public Integer getBookId(){
+    public int getBookId(){
         return this.bookId;
     }
 
@@ -47,7 +47,7 @@ public class BookViewModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookViewModel that = (BookViewModel) o;
-        return Objects.equals(bookId, that.bookId) &&
+        return bookId == that.bookId &&
                 Objects.equals(title, that.title) &&
                 Objects.equals(author, that.author) &&
                 Objects.equals(note, that.note);

@@ -19,17 +19,16 @@ public class BookService {
     @Autowired
     private BookDao bookDao;
 
-    //@Autowired
-    private final NoteServiceClient noteServiceClient  = null;
+    @Autowired
+    private NoteServiceClient noteServiceClient;
 
     public BookService() {
 
     }
     @Autowired
     public BookService(BookDao newBookDao, NoteServiceClient noteServiceClient){
-
         this.bookDao = newBookDao;
-        //this.noteServiceClient = noteServiceClient;
+        this.noteServiceClient = noteServiceClient;
     }
 
 
@@ -87,8 +86,8 @@ public class BookService {
     @Transactional
     public void deleteBook(int id){
 
-        //noteServiceClient.deleteNotesByBook(id);
-
+        List<Note> notes = noteServiceClient.getNoteByBook(id);
+        notes.forEach(note -> noteServiceClient.deleteNote(note.getNoteId()));
         bookDao.deleteBook(id);
 
 
@@ -100,9 +99,9 @@ public class BookService {
         bvm.setTitle(book.getTitle());
         bvm.setAuthor(book.getAuthor());
 
-        //List<Note> noteList = noteServiceClient.getNotesByBook(book.getBookId());
+        List<Note> noteList = noteServiceClient.getNoteByBook(book.getBookId());
 
-        //bvm.setNote(noteList);
+        bvm.setNote(noteList);
 
         return bvm;
 
