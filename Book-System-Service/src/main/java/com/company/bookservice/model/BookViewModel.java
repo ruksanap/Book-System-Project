@@ -1,12 +1,15 @@
 package com.company.bookservice.model;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.Objects;
 
 public class BookViewModel {
 
     private int bookId;
+    @NotEmpty(message = "Please supply a title for the book.")
     private String title;
+    @NotEmpty(message = "Please supply an author for the book.")
     private String author;
     private List<Note> note;
 
