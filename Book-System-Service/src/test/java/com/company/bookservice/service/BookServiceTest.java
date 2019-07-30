@@ -7,6 +7,7 @@ import com.company.bookservice.model.Note;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
+@SpringBootTest
 public class BookServiceTest extends AbstractTestNGSpringContextTests {
 
 //    @Autowired
