@@ -1,5 +1,6 @@
 package com.company.bookservice.controller;
 
+import com.company.bookservice.exception.NotFoundException;
 import com.company.bookservice.model.Book;
 import com.company.bookservice.model.BookViewModel;
 import com.company.bookservice.model.Note;
@@ -14,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,7 +35,7 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BookViewModel saveBook(@RequestBody BookViewModel bookViewModel) {
+    public BookViewModel saveBook(@RequestBody @Valid BookViewModel bookViewModel) {
 
         return service.saveBook(bookViewModel);
     }
@@ -52,7 +54,7 @@ public class BookController {
         System.out.println(service);
         BookViewModel bookViewModel = service.findBookById(id);
         if (bookViewModel == null) {
-            throw new IllegalArgumentException("Book cannot be retrieved by ID provided: " + id);
+            throw new NotFoundException("Book cannot be retrieved by ID provided: " + id);
         }
         return bookViewModel;
     }
@@ -78,7 +80,7 @@ public class BookController {
 //
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateBook(@PathVariable("id") int id, @RequestBody BookViewModel bookViewModel) {
+    public void updateBook(@PathVariable("id") int id, @RequestBody @Valid BookViewModel bookViewModel) {
         System.out.println(service);
         if (bookViewModel.getBookId() == 0) {
             bookViewModel.setBookId(id);
