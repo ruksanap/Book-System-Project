@@ -17,13 +17,13 @@ import java.util.List;
 @Component
 public class BookService {
 
-    @Autowired
+
     private BookDao bookDao;
 
-    @Autowired
+
     private NoteServiceClient noteServiceClient;
 
-    @Autowired
+
     private RabbitTemplate rabbitTemplate;
 
     public static final String EXCHANGE = "note-exchange";
