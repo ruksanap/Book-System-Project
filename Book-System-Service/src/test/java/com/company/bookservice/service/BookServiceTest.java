@@ -133,17 +133,6 @@ public class BookServiceTest extends AbstractTestNGSpringContextTests {
 
     public void setUpBookDaoMock(){
         bookDao = mock(BookDaoJdbcTemplateImpl.class);
-//
-//        Note note = new Note();
-//        note.setNote("note");
-//
-//        Note note2 = new Note();
-//        note2.setNote("note 2");
-//
-//        List<Note> noteList = new ArrayList<>();
-//
-//        noteList.add(note);
-//        noteList.add(note2);
 
 
         Book book = new Book();
