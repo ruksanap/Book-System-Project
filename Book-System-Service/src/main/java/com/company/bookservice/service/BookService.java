@@ -17,13 +17,13 @@ import java.util.List;
 @Component
 public class BookService {
 
-    @Autowired
+
     private BookDao bookDao;
 
-    @Autowired
+
     private NoteServiceClient noteServiceClient;
 
-    @Autowired
+
     private RabbitTemplate rabbitTemplate;
 
     public static final String EXCHANGE = "note-exchange";
@@ -50,6 +50,8 @@ public class BookService {
         note.setBookId(book.getBookId());
         String noteStr = "Author: "+book.getAuthor()+"Title: "+book.getTitle();
         note.setNote(noteStr);
+        System.out.println(note);
+        System.out.println(note.getNoteId());
         rabbitTemplate.convertAndSend(EXCHANGE, ROUTING_KEY, note);
         bvm = buildBookViewModel(book);
 
