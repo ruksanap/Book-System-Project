@@ -74,12 +74,10 @@ public class BookServiceTest extends AbstractTestNGSpringContextTests {
 
         assertEquals(book, bookCheck);
 
-
     }
 
     @Test
     public void findAllBooks() {
-
 
         BookViewModel bvm = new BookViewModel();
         bvm.setAuthor("author");
@@ -95,7 +93,6 @@ public class BookServiceTest extends AbstractTestNGSpringContextTests {
         List<BookViewModel> bvmList = bookService.findAllBooks();
 
         assertEquals(bvmList.size(), 1);
-
 
     }
 

@@ -50,8 +50,6 @@ public class BookService {
         note.setBookId(book.getBookId());
         String noteStr = "Author: "+book.getAuthor()+"Title: "+book.getTitle();
         note.setNote(noteStr);
-        System.out.println(note);
-        System.out.println(note.getNoteId());
         rabbitTemplate.convertAndSend(EXCHANGE, ROUTING_KEY, note);
         bvm = buildBookViewModel(book);
 
